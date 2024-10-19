@@ -1,10 +1,9 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-// const uniqid = require('uniqid'); 
-
 
 const initialstate = {
+  id:"",
   title: "",
   price: "",
   image: "",
@@ -34,7 +33,7 @@ const Postproduct = () => {
   const handlesubmit = (e) => {
     e.preventDefault(e)
     console.log(formdata)
-    // const newformdata = { ...formdata, id: id ? id : uniqid() }
+
  
       axios.post(`http://localhost:3030/addproduct`, formdata)
         .then((res) => {
@@ -52,7 +51,7 @@ const Postproduct = () => {
   const { title, price, category, description, image } = formdata
   return (
     <div>
-      <h1>post</h1>
+      <h1>add product</h1>
        <form onSubmit={(e)=>handlesubmit(e)}  style={{textAlign:"center",boxShadow:"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px",width:'30%',margin:"5% auto",padding:"30px 15px"}}>
         <input type="text" name="image" value={image} onChange={(e)=>handlechange(e)}  placeholder="image" /> <br />  <br />
         <input type="text" name="title" value={title} onChange={(e)=>handlechange(e)} placeholder="title" /> <br /><br />
